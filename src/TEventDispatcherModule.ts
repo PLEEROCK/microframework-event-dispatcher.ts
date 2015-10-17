@@ -2,7 +2,7 @@ import {TEventDispatcherModuleConfig} from "./TEventDispatcherModuleConfig";
 import {Module} from "microframework/Module";
 import {ModuleInitOptions} from "microframework/Module";
 import {Utils} from "t-event-dispatcher/Utils";
-import {defaultMetadataStorage} from "t-event-dispatcher/MetadataRegistry";
+import {defaultMetadataRegistry} from "t-event-dispatcher/MetadataRegistry";
 
 /**
  * T-Event-Dispatcher module integration with microframework.
@@ -65,7 +65,7 @@ export class TEventDispatcherModule implements Module {
 
     private setupControllers() {
         Utils.requireAll(this.getSubscriberDirectories());
-        defaultMetadataStorage.container = this.options.container;
+        defaultMetadataRegistry.container = this.options.container;
     }
 
 }

@@ -1,6 +1,6 @@
 {
   "name": "microframework-t-event-dispatcher",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "T-Event-Dispatcher integration with microframework",
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "microframework": ">=0.1.0",
-    "t-event-dispatcher": ">=0.0.1"
+    "t-event-dispatcher": ">=0.0.3"
   },
   "devDependencies": {
     "del": "^2.0.2",
