@@ -44,7 +44,8 @@ export class TEventDispatcherModule implements Module {
     }
 
     afterBootstrap(): Promise<any> {
-        this.setupControllers();
+        Utils.requireAll(this.getSubscriberDirectories());
+        defaultMetadataRegistry.container = this.options.container;
         return Promise.resolve();
     }
 
@@ -61,11 +62,6 @@ export class TEventDispatcherModule implements Module {
             return [this.options.frameworkSettings.baseDirectory + '/' + TEventDispatcherModule.DEFAULT_SUBSCRIBER_DIRECTORY];
 
         return this.configuration.subscriberDirectories;
-    }
-
-    private setupControllers() {
-        Utils.requireAll(this.getSubscriberDirectories());
-        defaultMetadataRegistry.container = this.options.container;
     }
 
 }
