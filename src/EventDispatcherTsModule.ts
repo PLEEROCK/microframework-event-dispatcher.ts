@@ -1,13 +1,13 @@
-import {TEventDispatcherModuleConfig} from "./TEventDispatcherModuleConfig";
+import {EventDispatcherTsModuleConfig} from "./EventDispatcherTsModuleConfig";
 import {Module} from "microframework/Module";
 import {ModuleInitOptions} from "microframework/Module";
-import {Utils} from "t-event-dispatcher/Utils";
-import {defaultMetadataRegistry} from "t-event-dispatcher/MetadataRegistry";
+import {Utils} from "event-dispatcher.ts/Utils";
+import {defaultMetadataRegistry} from "event-dispatcher.ts/MetadataRegistry";
 
 /**
  * T-Event-Dispatcher module integration with microframework.
  */
-export class TEventDispatcherModule implements Module {
+export class EventDispatcherTsModule implements Module {
 
     // -------------------------------------------------------------------------
     // Constants
@@ -20,21 +20,21 @@ export class TEventDispatcherModule implements Module {
     // -------------------------------------------------------------------------
 
     private options: ModuleInitOptions;
-    private configuration: TEventDispatcherModuleConfig;
+    private configuration: EventDispatcherTsModuleConfig;
 
     // -------------------------------------------------------------------------
     // Accessors
     // -------------------------------------------------------------------------
 
     getName(): string {
-        return 'TEventDispatcherModule';
+        return 'EventDispatcherTsModule';
     }
 
     getConfigurationName(): string {
-        return 't-event-dispatcher';
+        return 'event-dispatcher.ts';
     }
 
-    init(options: ModuleInitOptions, configuration: TEventDispatcherModuleConfig): void {
+    init(options: ModuleInitOptions, configuration: EventDispatcherTsModuleConfig): void {
         this.options = options;
         this.configuration = configuration;
     }
@@ -59,7 +59,7 @@ export class TEventDispatcherModule implements Module {
 
     private getSubscriberDirectories(): string[] {
         if (!this.configuration || !this.configuration.subscriberDirectories)
-            return [this.options.frameworkSettings.baseDirectory + '/' + TEventDispatcherModule.DEFAULT_SUBSCRIBER_DIRECTORY];
+            return [this.options.frameworkSettings.baseDirectory + '/' + EventDispatcherTsModule.DEFAULT_SUBSCRIBER_DIRECTORY];
 
         return this.configuration.subscriberDirectories;
     }

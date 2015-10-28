@@ -1,7 +1,7 @@
 /**
- * Configuration for mf-t-event-dispatcher module.
+ * Configuration for mf-event-dispatcher.ts module.
  */
-export interface TEventDispatcherModuleConfig {
+export interface EventDispatcherTsModuleConfig {
 
     /**
      * List of directories where from subscribers classes will be loaded.

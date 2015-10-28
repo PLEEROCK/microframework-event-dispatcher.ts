@@ -1,7 +1,7 @@
 {
-  "name": "microframework-t-event-dispatcher",
-  "version": "0.0.2",
-  "description": "T-Event-Dispatcher integration with microframework",
+  "name": "microframework-event-dispatcher.ts",
+  "version": "0.0.3",
+  "description": "Event-Dispatcher.ts integration with microframework",
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "author": {
@@ -10,24 +10,24 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PLEEROCK/microframework-t-event-dispatcher.git"
+    "url": "https://github.com/PLEEROCK/microframework-event-dispatcher.ts.git"
   },
   "bugs": {
-    "url": "https://github.com/PLEEROCK/microframework-t-event-dispatcher/issues"
+    "url": "https://github.com/PLEEROCK/microframework-event-dispatcher.ts/issues"
   },
   "tags": [
     "microframework",
-    "t-event-dispatcher"
+    "event-dispatcher.ts"
   ],
-  "typings": "./microframework-t-event-dispatcher.d.ts",
+  "typings": "./microframework-event-dispatcher.ts.d.ts",
   "typescript": {
     "definitions": [
-      "microframework-t-event-dispatcher.d.ts"
+      "microframework-event-dispatcher.ts.d.ts"
     ]
   },
   "dependencies": {
     "microframework": ">=0.1.0",
-    "t-event-dispatcher": ">=0.0.3"
+    "event-dispatcher.ts": ">=0.0.4"
   },
   "devDependencies": {
     "del": "^2.0.2",
