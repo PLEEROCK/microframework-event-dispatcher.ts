@@ -65,10 +65,7 @@ export class EventDispatcherTsModule implements Module {
     }
 
     private getSourceCodeDirectory() {
-        let dir = this.options.frameworkSettings.baseDirectory + '/';
-        if (this.options.frameworkSettings.srcDirectory)
-            dir += this.options.frameworkSettings.srcDirectory + '/';
-        return dir;
+        return this.options.frameworkSettings.srcDirectory + '/';
     }
 
 }
