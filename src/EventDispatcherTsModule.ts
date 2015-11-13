@@ -59,9 +59,16 @@ export class EventDispatcherTsModule implements Module {
 
     private getSubscriberDirectories(): string[] {
         if (!this.configuration || !this.configuration.subscriberDirectories)
-            return [this.options.frameworkSettings.baseDirectory + '/' + EventDispatcherTsModule.DEFAULT_SUBSCRIBER_DIRECTORY];
+            return [this.getSourceCodeDirectory() + EventDispatcherTsModule.DEFAULT_SUBSCRIBER_DIRECTORY];
 
         return this.configuration.subscriberDirectories;
+    }
+
+    private getSourceCodeDirectory() {
+        let dir = this.options.frameworkSettings.baseDirectory + '/';
+        if (this.options.frameworkSettings.srcDirectory)
+            dir += this.options.frameworkSettings.srcDirectory + '/';
+        return dir;
     }
 
 }
