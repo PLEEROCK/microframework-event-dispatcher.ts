@@ -13,7 +13,7 @@ export class EventDispatcherTsModule implements Module {
     // Constants
     // -------------------------------------------------------------------------
 
-    public static DEFAULT_SUBSCRIBER_DIRECTORY = 'subscriber';
+    public static DEFAULT_SUBSCRIBER_DIRECTORY = "subscriber";
 
     // -------------------------------------------------------------------------
     // Properties
@@ -27,11 +27,11 @@ export class EventDispatcherTsModule implements Module {
     // -------------------------------------------------------------------------
 
     getName(): string {
-        return 'EventDispatcherTsModule';
+        return "EventDispatcherTsModule";
     }
 
     getConfigurationName(): string {
-        return 'event-dispatcher.ts';
+        return "event-dispatcher.ts";
     }
 
     init(options: ModuleInitOptions, configuration: EventDispatcherTsModuleConfig): void {
@@ -65,7 +65,7 @@ export class EventDispatcherTsModule implements Module {
     }
 
     private getSourceCodeDirectory() {
-        return this.options.frameworkSettings.srcDirectory + '/';
+        return this.options.frameworkSettings.srcDirectory + "/";
     }
 
 }
