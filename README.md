@@ -1,19 +1,19 @@
-# Event-Dispatcher.ts module for Microframework
+# event-dispatch module for Microframework
 
-Adds integration between [event-dispatcher.ts](http://github.com/pleerock/event-dispatcher.ts) and
+Adds integration between [event-dispatch](http://github.com/pleerock/event-dispatch) and
 [microframework](https://github.com/pleerock/microframework).
 
 ## Usage
 
 1. Install module:
 
-    `npm install --save microframework-event-dispatcher.ts`
+    `npm install --save microframework-event-dispatch`
 
 2. Simply register module in the microframework when you are bootstrapping it.
     
     ```typescript
         import {MicroFrameworkBootstrapper} from "microframework/MicroFrameworkBootstrapper";
-        import {EventDispatcherTsModule} from "microframework-event-dispatcher.ts/EventDispatcherTsModule";
+        import {EventDispatchModule} from "microframework-event-dispatch/EventDispatchModule";
         
         new MicroFrameworkBootstrapper({ baseDirectory: __dirname })
             .registerModules([
@@ -30,7 +30,7 @@ Adds integration between [event-dispatcher.ts](http://github.com/pleerock/event-
 
     you may need to `require("es6-shim");` in your app.
 
-4. Now you can use [event-dispatcher.ts](https://github.com/pleerock/event-dispatcher.ts) module in your microframework.
+4. Now you can use [event-dispatch](https://github.com/pleerock/event-dispatch) module in your microframework.
 
 ## Todos
 

@@ -1,13 +1,14 @@
-import {EventDispatcherTsModuleConfig} from "./EventDispatcherTsModuleConfig";
+import {EventDispatchModuleConfig} from "./EventDispatchModuleConfig";
 import {Module} from "microframework/Module";
 import {ModuleInitOptions} from "microframework/Module";
-import {Utils} from "event-dispatcher.ts/Utils";
-import {defaultMetadataRegistry} from "event-dispatcher.ts/MetadataRegistry";
+import {defaultMetadataRegistry} from "event-dispatch/MetadataRegistry";
+import * as fs from "fs";
+import * as path from "path";
 
 /**
- * T-Event-Dispatcher module integration with microframework.
+ * event-dispatch module integration with microframework.
  */
-export class EventDispatcherTsModule implements Module {
+export class EventDispatchModule implements Module {
 
     // -------------------------------------------------------------------------
     // Constants
@@ -20,21 +21,21 @@ export class EventDispatcherTsModule implements Module {
     // -------------------------------------------------------------------------
 
     private options: ModuleInitOptions;
-    private configuration: EventDispatcherTsModuleConfig;
+    private configuration: EventDispatchModuleConfig;
 
     // -------------------------------------------------------------------------
     // Accessors
     // -------------------------------------------------------------------------
 
     getName(): string {
-        return "EventDispatcherTsModule";
+        return "EventDispatchModule";
     }
 
     getConfigurationName(): string {
-        return "event-dispatcher.ts";
+        return "event-dispatch";
     }
 
-    init(options: ModuleInitOptions, configuration: EventDispatcherTsModuleConfig): void {
+    init(options: ModuleInitOptions, configuration: EventDispatchModuleConfig): void {
         this.options = options;
         this.configuration = configuration;
     }
@@ -44,7 +45,7 @@ export class EventDispatcherTsModule implements Module {
     }
 
     afterBootstrap(): Promise<any> {
-        Utils.requireAll(this.getSubscriberDirectories());
+        this.requireAll(this.getSubscriberDirectories());
         defaultMetadataRegistry.container = this.options.container;
         return Promise.resolve();
     }
@@ -59,13 +60,34 @@ export class EventDispatcherTsModule implements Module {
 
     private getSubscriberDirectories(): string[] {
         if (!this.configuration || !this.configuration.subscriberDirectories)
-            return [this.getSourceCodeDirectory() + EventDispatcherTsModule.DEFAULT_SUBSCRIBER_DIRECTORY];
+            return [this.getSourceCodeDirectory() + EventDispatchModule.DEFAULT_SUBSCRIBER_DIRECTORY];
 
         return this.configuration.subscriberDirectories;
     }
 
     private getSourceCodeDirectory() {
         return this.options.frameworkSettings.srcDirectory + "/";
+    }
+
+    /**
+     * Makes "require()" all js files (or custom extension files) in the given directory.
+     * todo: use require-all instead
+     */
+    private requireAll(directories: string[], extension: string = ".js"): any[] {
+        let files: any[] = [];
+        directories.forEach((dir: string) => {
+            if (fs.existsSync(dir)) {
+                fs.readdirSync(dir).forEach((file: string) => {
+                    if (fs.statSync(dir + "/" + file).isDirectory()) {
+                        let requiredFiles = this.requireAll([dir + "/" + file], extension);
+                        requiredFiles.forEach((file: string) => files.push(file));
+                    } else if (path.extname(file) === extension) {
+                        files.push(require(dir + "/" + file));
+                    }
+                });
+            }
+        }); // todo: implement recursion
+        return files;
     }
 
 }

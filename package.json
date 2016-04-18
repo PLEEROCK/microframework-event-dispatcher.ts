@@ -1,8 +1,8 @@
 {
-  "name": "microframework-event-dispatcher.ts",
+  "name": "microframework-event-dispatcher",
   "private": true,
-  "version": "0.1.0",
-  "description": "Event-Dispatcher.ts integration with microframework",
+  "version": "0.2.0",
+  "description": "event-dispatch integration with microframework",
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "author": {
@@ -11,18 +11,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/pleerock/microframework-event-dispatcher.ts.git"
+    "url": "https://github.com/pleerock/microframework-event-dispatch.git"
   },
   "bugs": {
-    "url": "https://github.com/pleerock/microframework-event-dispatcher.ts/issues"
+    "url": "https://github.com/pleerock/microframework-event-dispatch/issues"
   },
   "tags": [
     "microframework",
-    "event-dispatcher.ts"
+    "event-dispatch"
   ],
   "dependencies": {
-    "microframework": "~0.4.0",
-    "event-dispatcher.ts": "~0.2.0"
+    "microframework": "~0.5.1",
+    "event-dispatch": "~0.3.0"
   },
   "devDependencies": {
     "chai": "^3.4.1",
