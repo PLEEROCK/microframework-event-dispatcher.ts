@@ -1,3 +1,5 @@
+> This repository is deprecated. Microframework architecure has changed. Please consider writing your own module for a newer versions of microframework.
+
 # event-dispatch module for Microframework
 
 Adds integration between [event-dispatch](http://github.com/pleerock/event-dispatch) and
